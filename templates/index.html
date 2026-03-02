@@ -30,9 +30,9 @@
               <p class="text-skill">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque eum, excepturi fuga illum labore nesciunt officiis quae quibusdam tempora! Blanditiis consequatur corporis deserunt eaque earum pariatur praesentium quisquam voluptates!</p>
               <div class="skill-items">
-                  {% for i in context %}
+                  {% for s in skills %}
                     <p>
-                        <span class="skill-name">{{ i }}</span>
+                        <span class="skill-name">{{ s.skill_name }}</span>
                     </p>
                   {% endfor %}
               </div>
