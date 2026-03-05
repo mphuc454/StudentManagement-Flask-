@@ -1,8 +1,10 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+from datetime import timedelta
 
 app = Flask(__name__)
+app.secret_key = 'Hello'
+app.permanent_session_lifetime = timedelta(minutes=1)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost:5432/MyWeb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -26,6 +28,27 @@ def home():
 @app.route('/skill')
 def skill():
         return render_template('skill.html')
+@app.route('/demo', methods = ['GET','POST'])
+def demo():
+    if request.method == 'POST':
+        session.permanent = True
+        useremail = request.form['email']
+        session['email'] = useremail
+        return redirect(url_for('usr'))
+    else:
+        return render_template('demo.html')
 
+@app.route('/user')
+def usr():
+    if 'email' in session:
+        usremail = session['email']
+        return f"<h1>{usremail}</h1>"
+    else:
+        return redirect(url_for('demo'))
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return  redirect(url_for('demo'))
 if __name__ == '__main__':
     app.run(debug=True)
