@@ -15,10 +15,10 @@ class Skill(db.Model):
     __table_args__ = {'schema':'Portfolio'}
 
     id = db.Column(db.Integer, primary_key = True)
-    skill_name = db.Column(db.String(255))
+    name = db.Column(db.String(255))
 
-    def __init__(self, skill_name):
-        self.skill_name = skill_name
+    def __init__(self, name):
+        self.name = name
 
 
 @app.route('/home')

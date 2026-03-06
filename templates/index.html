@@ -1,73 +1,111 @@
-{% extends 'Header-Footer/base.html' %}
-{% block title %} Home {% endblock %}
-{% block content %}
-    <div class="hero my-5">
-      <div class="container">
-        <div class="row justify-content-between info">
-          <div class="col-lg-8">
-            <div class="intro-excerpt">
-              <h1>
-                  Xin chào, Tôi là MPhúc
-              </h1>
-              <p class="mb-4" id="text">
-                Đây là trang web lập ra phục vụ học tập và công việc xin phỏng vấn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur dolorem ea ex facilis harum laudantium mollitia neque nulla, odio, perferendis possimus, quasi tenetur unde!
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="img-wrap">
-              <img src="{{ url_for('static', filename='images/imgProfile/Profile.png') }}" class="img-profile mx-5"  alt="Ảnh đại diện" />
-            </div>
-          </div>
+{% extends 'Header-Footer/base.html' %} {% block title %} Home {% endblock %} {%
+block content %}
+<div class="hero my-5">
+  <div class="container">
+    <div class="row justify-content-between info">
+      <div class="col-lg-8">
+        <div class="intro-excerpt">
+          <h1>Xin chào, Tôi là MPhúc</h1>
+          <p class="mb-4" id="text">
+            Đây là trang web lập ra phục vụ học tập và công việc xin phỏng vấn
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            consequatur dolorem ea ex facilis harum laudantium mollitia neque
+            nulla, odio, perferendis possimus, quasi tenetur unde!
+          </p>
         </div>
-          <div class="contact-btn">
-              <a href="{{ url_for('skill') }}" class="my-contact"> <i class="fa-solid fa-code icon"></i> Kỹ năng của tôi</a>
-              <a href="" class="my-contact"> <i class="fa-regular fa-envelope icon"></i> Liên hệ </a>
-              <a href="" class="my-contact"><i class="fa-regular fa-address-card icon"></i> Tiểu sử</a>
-          </div>
-          <div class="my-skill mt-5">
-              <h2 class="title-skill">KỸ NĂNG CỦA TÔI</h2>
-              <p class="text-skill">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque eum, excepturi fuga illum labore nesciunt officiis quae quibusdam tempora! Blanditiis consequatur corporis deserunt eaque earum pariatur praesentium quisquam voluptates!</p>
-              <div class="skill-items">
-                  {% for s in skills %}
-                    <p>
-                        <span class="skill-name">{{ s.skill_name }}</span>
-                    </p>
-                  {% endfor %}
-              </div>
-          </div>
-          <div class="form  mt-5">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="introduce-contact">
-                            <h2>LIÊN HỆ</h2>
-                                <p>
-                                    Bạn có thể liên hệ thắc mắc cho chúng tôi biết về điều gì
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto, atque beatae dicta dolorem dolores eligendi esse id, libero magni minus odit porro qui similique, sunt! Accusantium at consequatur, iusto placeat repudiandae veniam voluptatem. Accusantium delectus eaque eos itaque minus nesciunt placeat quis quos sed sequi. Ad atque magnam similique.
-                                </p>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form form-contact">
-                            <form>
-                                <label for="usrname" class="form-label" >Tên của bạn</label>
-                                 <input type="name" id="usrname" name="usrname" class="form-control">
-                                <label for="usremail" class="form-label" >Email của bạn</label>
-                                 <input type="email" id="usremail" name="usremail" class="form-control">
-                                <label for="usrmess" class="form-label">Lời nhắn</label>
-                                <textarea class="form-control" id="usrmess" rows="10" name="mess"></textarea>
-                            </form>
-                        </div>
-                            <div class="all-btn text-center">
-                                <button class="btn-submit" type="submit"><i class="fa-solid fa-paper-plane" style="color: rgb(255,253,253);"></i> GỬI THÔNG TIN</button>
-                            </div>
-                    </div>
-
-                </div>
-          </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="img-wrap">
+          <img
+            src="{{ url_for('static', filename='images/imgProfile/Profile.png') }}"
+            class="img-profile mx-5"
+            alt="Ảnh đại diện"
+          />
+        </div>
       </div>
     </div>
-    <!-- End Hero Section -->
+    <div class="contact-btn">
+      <a href="{{ url_for('skill') }}" class="my-contact">
+        <i class="fa-solid fa-code icon"></i> Kỹ năng của tôi</a
+      >
+      <a href="" class="my-contact">
+        <i class="fa-regular fa-envelope icon"></i> Liên hệ
+      </a>
+      <a href="" class="my-contact"
+        ><i class="fa-regular fa-address-card icon"></i> Tiểu sử</a
+      >
+    </div>
+    <div class="my-skill mt-5">
+      <h2 class="title-skill">KỸ NĂNG CỦA TÔI</h2>
+      <p class="text-skill">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+        cumque eum, excepturi fuga illum labore nesciunt officiis quae quibusdam
+        tempora! Blanditiis consequatur corporis deserunt eaque earum pariatur
+        praesentium quisquam voluptates!
+      </p>
+      <div class="skill-items">
+        {% for s in skills %}
+        <p>
+          <span class="skill-name">{{ s.name }}</span>
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="form mt-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="introduce-contact">
+            <h2>LIÊN HỆ</h2>
+            <p>
+              Bạn có thể liên hệ thắc mắc cho chúng tôi biết về điều gì Lorem
+              ipsum dolor sit amet, consectetur adipisicing elit. Alias
+              architecto, atque beatae dicta dolorem dolores eligendi esse id,
+              libero magni minus odit porro qui similique, sunt! Accusantium at
+              consequatur, iusto placeat repudiandae veniam voluptatem.
+              Accusantium delectus eaque eos itaque minus nesciunt placeat quis
+              quos sed sequi. Ad atque magnam similique.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form form-contact">
+            <form>
+              <label for="usrname" class="form-label">Tên của bạn</label>
+              <input
+                type="name"
+                id="usrname"
+                name="usrname"
+                class="form-control"
+              />
+              <label for="usremail" class="form-label">Email của bạn</label>
+              <input
+                type="email"
+                id="usremail"
+                name="usremail"
+                class="form-control"
+              />
+              <label for="usrmess" class="form-label">Lời nhắn</label>
+              <textarea
+                class="form-control"
+                id="usrmess"
+                rows="10"
+                name="mess"
+              ></textarea>
+            </form>
+          </div>
+          <div class="all-btn text-center">
+            <button class="btn-submit" type="submit">
+              <i
+                class="fa-solid fa-paper-plane"
+                style="color: rgb(255, 253, 253)"
+              ></i>
+              GỬI THÔNG TIN
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Hero Section -->
 {% endblock %}
